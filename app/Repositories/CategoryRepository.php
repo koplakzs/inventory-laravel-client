@@ -15,8 +15,8 @@ class CategoryRepository implements CategoryRepositoryInterface
             if ($search) {
                 $query->search($search);
             }
-            $query->orderBy('created_at', 'desc');
         });
+        $query->orderBy('created_at', 'desc');
         if ($limit) {
             $query->take($limit);
         }

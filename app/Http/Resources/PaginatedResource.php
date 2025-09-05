@@ -27,11 +27,11 @@ class PaginatedResource extends JsonResource
         return [
             'data' => $this->collect($this->items()),
             'meta' => [
-                'current_page' => $this->currentPage(),
+                'currentPage' => $this->currentPage(),
                 'from' => $this->firstItem(),
-                'last_page' => $this->lastPage(),
+                'lastPage' => $this->lastPage(),
                 'path' => $this->path(),
-                'per_page' => $this->perPage(),
+                'perPage' => $this->perPage(),
                 'to' => $this->lastItem(),
                 'total' => $this->total(),
             ]
