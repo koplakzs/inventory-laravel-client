@@ -15,6 +15,7 @@ Route::post('/auth', [AuthController::class, 'auth']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/dashboard', [MainController::class, 'index']);
+    Route::get('/report', [MainController::class, 'report']);
     Route::apiResource('category', CategoryController::class);
     Route::get('categories/all/paginated', [CategoryController::class, 'getAllPaginated']);
     Route::apiResource('product', ProductController::class);

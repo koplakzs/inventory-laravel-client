@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -25,5 +26,12 @@ class Product extends Model
     public function scopeSearch($query, $search)
     {
         return $query->where('name', 'like', '%' . $search . '%')->orWhere('code', 'like', '%' . $search . '%');
+    }
+    public function scopeReport($query, string $start, string $end)
+    {
+        $startDate = Carbon::parse($start)->startOfDay();
+        $endDate   = Carbon::parse($end)->endOfDay();
+        $query->whereBetween('created_at', [$startDate, $endDate]);
+        return $query->orderBy('created_at', 'desc');
     }
 }
